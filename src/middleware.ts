@@ -35,17 +35,18 @@ export async function middleware(request: NextRequest) {
     const { data: { user } } = await supabase.auth.getUser()
 
     // Protected routes logic
-    if (request.nextUrl.pathname.startsWith('/dashboard')) {
-        if (!user) {
-            return NextResponse.redirect(new URL('/login', request.url))
-        }
-    }
+    // Protected routes logic
+    // if (request.nextUrl.pathname.startsWith('/dashboard')) {
+    //     if (!user) {
+    //         return NextResponse.redirect(new URL('/login', request.url))
+    //     }
+    // }
 
-    if (request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/register') {
-        if (user) {
-            return NextResponse.redirect(new URL('/dashboard', request.url))
-        }
-    }
+    // if (request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/register') {
+    //     if (user) {
+    //         return NextResponse.redirect(new URL('/dashboard', request.url))
+    //     }
+    // }
 
     return response
 }
